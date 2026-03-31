@@ -1,0 +1,598 @@
+/* 1. VARIABLES Y CONFIGURACIÓN GLOBAL */
+:root {
+    --black: #0b0b0b;
+    --white: #f5f3ef;
+    --gold: #c9a24d;
+    --gray: #888888;
+    --transition: all 0.4s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--black);
+    color: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Personalización de la selección de texto */
+::selection {
+    background-color: var(--gold);
+    color: var(--black);
+}
+
+/* 2. NAVEGACIÓN (HEADER) */
+.nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 0.8rem 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(22, 22, 22, 0.7);
+    backdrop-filter: blur(15px);
+    z-index: 1000;
+    border-bottom: 1px solid #0303030d;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    font-size: 1.5rem;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 2.5rem;
+    font-size: 0.9rem;
+    /* CORREGIDO: era 0.1rem */
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    opacity: 0.7;
+    /* CORREGIDO: era 100% */
+    transition: var(--transition);
+}
+
+.nav a:hover {
+    opacity: 1;
+    color: var(--gold);
+}
+
+/* 3. HERO SECTION - UNIFICADO */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+    background-image: linear-gradient(90deg, rgba(11, 11, 11, 0.95) 0%, rgba(11, 11, 11, 0.75) 35%, rgba(11, 11, 11, 0.45) 65%, rgba(11, 11, 11, 0.15) 100%), url("imagenes/homepage2.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 4rem;
+}
+
+.hero-content {
+    flex: 1;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.hero-content h1 span {
+    color: var(--gold);
+}
+
+.hero-content p {
+    margin-top: 2rem;
+    max-width: 500px;
+    font-size: 1.1rem;
+    color: var(--gray);
+}
+
+/* PRODUCTO FLOTANTE EN HERO */
+.hero-product {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    margin-right: 15%;
+}
+
+.hero-product img {
+    max-width: 90%;
+    height: auto;
+    mix-blend-mode: normal;
+    opacity: 1;
+    filter: drop-shadow(0 0 30px rgba(201, 162, 77, 0.2)) drop-shadow(0 20px 50px rgba(0, 0, 0, 0.9));
+    animation: floating 4s ease-in-out infinite;
+    transition: transform 0.5s ease;
+}
+
+.hero-product img:hover {
+    filter: drop-shadow(0 0 40px rgba(201, 162, 77, 0.4)) drop-shadow(0 20px 50px rgba(0, 0, 0, 0.9));
+    transform: scale(1.02);
+}
+
+/* BOTÓN DORADO */
+.btn-gold {
+    display: inline-block;
+    margin-top: 2.5rem;
+    padding: 1rem 2.5rem;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    transition: all 0.3s ease;
+}
+
+.btn-gold:hover {
+    background-color: var(--gold);
+    color: var(--black);
+    box-shadow: 0 0 20px rgba(201, 162, 77, 0.4);
+}
+
+/* 4. SECCIÓN EDITORIAL Y METADATA */
+.editorial {
+    padding: 8rem 8%;
+}
+
+.editorial-section {
+    background-color: #181817;
+    color: white;
+    padding: 80px 20px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.editorial-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    max-width: 850px;
+    margin-bottom: 1.5rem;
+    margin-left: -50px;
+
+
+}
+
+.editorial-text p {
+    max-width: 550px;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.6;
+    opacity: 0.8;
+    margin-left: -50px;
+
+}
+
+.editorial-finca img {
+    margin-top: 2rem;
+    width: 500px;
+    max-width: 400vh;
+    border-radius: 10px;
+    box-shadow: 0 1px 15px rgba(0, 0, 0, 0.3);
+}
+
+.editorial-metadata::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 12%;
+    width: 76%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+}
+
+.stat-box {
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 2rem;
+    transition: all 0.4s ease;
+    background: #0a0a0a;
+}
+
+.stat-box:hover {
+    border-color: rgba(212, 175, 55, 1);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.stat-box .label {
+    color: #D4AF37;
+    letter-spacing: 0.2rem;
+    font-size: 0.7rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.editorial-metadata>div {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition);
+    text-align: center;
+}
+
+.editorial-metadata>div:hover {
+    background: rgba(201, 162, 77, 0.05);
+    border-color: var(--gold);
+    transform: translateY(-10px);
+}
+
+.editorial-metadata span {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+
+.editorial-metadata strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--white);
+}
+
+/* 5. SECCIÓN ORIGEN */
+.origen {
+    position: relative;
+    padding: 12rem 8%;
+    background-color: #0e0e0e;
+    overflow: hidden;
+}
+
+.origen::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -5%;
+    width: 50%;
+    height: 100%;
+    background-image: url("imagenes/homepage2.png");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+    filter: grayscale(100%);
+    pointer-events: none;
+}
+
+.origen-copy h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.origen-copy p {
+    max-width: 450px;
+    font-size: 1.1rem;
+    color: var(--gray);
+}
+
+/* 6. SECCIÓN COLECCIÓN (PRODUCTOS) */
+.coleccion {
+    padding: 10rem 8%;
+}
+
+.coleccion h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.lotes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 4rem;
+}
+
+.lote {
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition);
+}
+
+.lote:hover {
+    border-color: var(--gold);
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.lote h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+}
+
+.lote p {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    color: var(--gray);
+}
+
+/* 7. CINEMA (QUOTE) */
+.cinema {
+    padding: 12rem 8%;
+    text-align: center;
+    background: linear-gradient(to bottom, var(--black), #1a1a1a);
+}
+
+.cinema blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-style: italic;
+    max-width: 1000px;
+    margin: 0 auto;
+    line-height: 1.4;
+}
+
+/* 8. CONTACTO */
+.contacto {
+    padding: 10rem 8%;
+    text-align: center;
+}
+
+.contacto h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact-links {
+    margin-top: 3rem;
+}
+
+.contact-link {
+    display: inline-block;
+    margin: 1rem;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 5px;
+    transition: var(--transition);
+}
+
+.contact-link:hover {
+    color: var(--gold);
+    letter-spacing: 0.15em;
+}
+
+/* 9. NUESTRO PRODUCTO */
+.nuestro-producto {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 4rem 8%;
+    background-color: var(--gold);
+}
+
+.nuestro-producto h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--black);
+}
+
+/* 10. FOOTER */
+footer {
+    padding: 4rem 8%;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--gray);
+    letter-spacing: 0.1em;
+}
+
+/* 11. ANIMACIONES */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floating {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.hero-content,
+.editorial-text,
+.cinema blockquote {
+    animation: fadeUp 1.5s ease-out;
+}
+
+/* 12. RESPONSIVE */
+
+/* MEDIA QUERIES: Ajustes para pantallas grandes (Desktop) */
+@media (min-width: 1024px) {
+    .editorial-text {
+        margin-left: 10%;
+    }
+}
+
+/* Tablets y pantallas medianas */
+@media (max-width: 992px) {
+    .hero-wrapper {
+        flex-direction: column;
+        text-align: center;
+        margin-top: 5rem;
+    }
+
+    .hero {
+        background-image: linear-gradient(rgba(11, 11, 11, 0.8), rgba(11, 11, 11, 0.8)), url("imagenes/homepage2.png");
+    }
+
+    .hero-product {
+        margin-right: 0;
+    }
+
+    .hero-content p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Grid editorial a una columna */
+    .container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .editorial-text {
+        margin-left: 0;
+    }
+
+    .editorial-text h2,
+    .editorial-text p {
+        margin-left: 0;
+    }
+
+    .editorial-finca img {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    /* Metadata responsive */
+    .editorial-metadata {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .nav {
+        padding: 1.2rem 5%;
+    }
+
+    .nav a {
+        font-size: 0.75rem;
+        margin-left: 1.5rem;
+    }
+
+    .hero,
+    .editorial,
+    .origen,
+    .coleccion,
+    .cinema,
+    .contacto,
+    .nuestro-producto {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .editorial-text h2,
+    .editorial-text p {
+        margin-left: 0;
+    }
+
+    .editorial-finca img {
+        width: 100%;
+    }
+
+    /* Metadata en 1 columna en mobile */
+    .editorial-metadata {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .editorial-metadata::before {
+        left: 0;
+        width: 100%;
+    }
+
+    /* Lotes en mobile */
+    .lotes {
+        gap: 2rem;
+    }
+
+    .origen {
+        padding-top: 8rem;
+        padding-bottom: 8rem;
+    }
+
+    .coleccion,
+    .cinema,
+    .contacto {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+}
+
+/* Mobile muy pequeño */
+@media (max-width: 480px) {
+    .nav a {
+        font-size: 0.65rem;
+        margin-left: 1rem;
+        letter-spacing: 0.1em;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .btn-gold {
+        padding: 0.8rem 1.8rem;
+        font-size: 0.7rem;
+    }
+
+    .contact-link {
+        display: block;
+        margin: 1rem auto;
+        width: fit-content;
+    }
+}

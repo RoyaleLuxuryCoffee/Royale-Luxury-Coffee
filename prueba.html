@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil Sensorial - Royal Luxury Coffee</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400&family=Cinzel:wght@400;600;700&family=Forum&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --gold-light: #f4e4c1;
+            --gold-main: #d4af37;
+            --gold-dark: #b8941e;
+            --gold-deeper: #8b7355;
+            --black-deep: #0a0a0a;
+            --black-soft: #111111;
+            --black-medium: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Forum', cursive;
+            background: var(--black-deep);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(139, 69, 19, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            animation: bgPulse 20s ease-in-out infinite;
+        }
+
+        @keyframes bgPulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        /* Grain texture overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            opacity: 0.4;
+        }
+
+        .profile-card {
+            position: relative;
+            max-width: 1100px;
+            width: 100%;
+            background: linear-gradient(165deg, var(--black-soft) 0%, var(--black-deep) 100%);
+            padding: 90px 80px;
+            box-shadow:
+                0 0 0 1px rgba(212, 175, 55, 0.5),
+                0 0 0 2px rgba(0, 0, 0, 0.9),
+                inset 0 2px 0 rgba(212, 175, 55, 0.15),
+                inset 0 -1px 0 rgba(212, 175, 55, 0.05),
+                0 40px 120px rgba(0, 0, 0, 0.9);
+            animation: cardEntry 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            clip-path: polygon(0 0,
+                    calc(100% - 40px) 0,
+                    100% 40px,
+                    100% 100%,
+                    40px 100%,
+                    0 calc(100% - 40px));
+        }
+
+        @keyframes cardEntry {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.96);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Decorative corner ornaments */
+        .corner-ornament {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            pointer-events: none;
+        }
+
+        .corner-ornament::before,
+        .corner-ornament::after {
+            content: '';
+            position: absolute;
+            background: var(--gold-main);
+        }
+
+        .corner-tl {
+            top: -1px;
+            left: -1px;
+        }
+
+        .corner-tl::before {
+            top: 0;
+            left: 0;
+            width: 60px;
+            height: 1px;
+        }
+
+        .corner-tl::after {
+            top: 0;
+            left: 0;
+            width: 1px;
+            height: 60px;
+        }
+
+        .corner-tr {
+            top: -1px;
+            right: -1px;
+        }
+
+        .corner-tr::before {
+            top: 0;
+            right: 0;
+            width: 60px;
+            height: 1px;
+        }
+
+        .corner-tr::after {
+            top: 0;
+            right: 0;
+            width: 1px;
+            height: 60px;
+        }
+
+        .corner-bl {
+            bottom: -1px;
+            left: -1px;
+        }
+
+        .corner-bl::before {
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 1px;
+        }
+
+        .corner-bl::after {
+            bottom: 0;
+            left: 0;
+            width: 1px;
+            height: 60px;
+        }
+
+        .corner-br {
+            bottom: -1px;
+            right: -1px;
+        }
+
+        .corner-br::before {
+            bottom: 0;
+            right: 0;
+            width: 60px;
+            height: 1px;
+        }
+
+        .corner-br::after {
+            bottom: 0;
+            right: 0;
+            width: 1px;
+            height: 60px;
+        }
+
+        /* Corner diamonds */
+        .corner-diamond {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--gold-main);
+            transform: rotate(45deg);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .diamond-tl {
+            top: 8px;
+            left: 8px;
+        }
+
+        .diamond-tr {
+            top: 8px;
+            right: 8px;
+        }
+
+        .diamond-bl {
+            bottom: 8px;
+            left: 8px;
+        }
+
+        .diamond-br {
+            bottom: 8px;
+            right: 8px;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-main), transparent);
+            animation: lineGrow 1.5s ease 0.5s forwards;
+        }
+
+        @keyframes lineGrow {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 150px;
+            }
+        }
+
+        .header::after {
+            content: '◆';
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--gold-main);
+            font-size: 10px;
+            opacity: 1;
+            animation: fadeIn 1s ease 1s forwards;
+        }
+
+        .royal-crown {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 20px;
+            opacity: 0.8;
+            animation: crownFloat 1s ease 0.3s forwards;
+        }
+
+        @keyframes crownFloat {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 0.8;
+                transform: translateY(0);
+            }
+        }
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            font-weight: 900;
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold-main) 40%, var(--gold-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            position: relative;
+            animation: titleReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+            text-shadow: 0 0 60px rgba(212, 175, 55, 0.2);
+        }
+
+        @keyframes titleReveal {
+            from {
+                opacity: 0;
+                letter-spacing: 28px;
+                filter: blur(10px);
+            }
+
+            to {
+                opacity: 1;
+                letter-spacing: 12px;
+                filter: blur(0);
+            }
+        }
+
+        .subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: 12px;
+            letter-spacing: 5px;
+            color: var(--gold-deeper);
+            text-transform: uppercase;
+            font-weight: 400;
+            animation: fadeIn 1.2s ease 0.6s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Origin Badge */
+        .origin-container {
+            text-align: center;
+            margin-bottom: 70px;
+            animation: fadeIn 1.2s ease 0.8s forwards;
+        }
+
+        .origin-badge {
+            display: inline-block;
+            position: relative;
+            padding: 24px 70px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.06) 0%, rgba(212, 175, 55, 0.02) 100%);
+            border-top: 1px solid rgba(212, 175, 55, 0.5);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.5);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .origin-badge:hover {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.04) 100%);
+            border-color: rgba(212, 175, 55, 0.7);
+            transform: scale(1.02);
+        }
+
+        .origin-badge::before,
+        .origin-badge::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 30px;
+            transform: translateY(-50%) rotate(45deg);
+            border: 1px solid var(--gold-main);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), transparent);
+            transition: all 0.4s ease;
+        }
+
+        .origin-badge::before {
+            left: 15px;
+        }
+
+        .origin-badge::after {
+            right: 15px;
+        }
+
+        .origin-badge:hover::before {
+            transform: translateY(-50%) rotate(45deg) scale(1.1);
+        }
+
+        .origin-badge:hover::after {
+            transform: translateY(-50%) rotate(45deg) scale(1.1);
+        }
+
+        .origin-label {
+            font-size: 10px;
+            letter-spacing: 4px;
+            color: var(--gold-deeper);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        .origin-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            color: var(--gold-light);
+            font-weight: 600;
+            letter-spacing: 3px;
+        }
+
+        /* Meter Section */
+        .meters-grid {
+            display: grid;
+            gap: 60px;
+        }
+
+        .meter-item {
+            position: relative;
+            opacity: 1;
+            animation: meterReveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .meter-item:hover {
+            transform: translateX(10px);
+        }
+
+        .meter-item:nth-child(1) {
+            animation-delay: 1s;
+        }
+
+        .meter-item:nth-child(3) {
+            animation-delay: 1.2s;
+        }
+
+        .meter-item:nth-child(5) {
+            animation-delay: 1.4s;
+        }
+
+        .meter-item:nth-child(7) {
+            animation-delay: 1.6s;
+        }
+
+        @keyframes meterReveal {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .meter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 28px;
+        }
+
+        .meter-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: var(--gold-light);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .meter-name::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+            width: 14px;
+            height: 14px;
+            border: 1px solid var(--gold-main);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), transparent);
+            transition: all 0.3s ease;
+        }
+
+        .meter-item:hover .meter-name::before {
+            transform: translateY(-50%) rotate(225deg);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.4), transparent);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        }
+
+        .meter-value {
+            font-family: 'Cinzel', serif;
+            font-size: 12px;
+            letter-spacing: 2.5px;
+            color: var(--gold-main);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Circular Meter Design */
+        .meter-visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            padding: 20px;
+        }
+
+        .meter-circle-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            flex-shrink: 0;
+        }
+
+        /* Outer glow ring */
+        .meter-circle-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .meter-item:hover .meter-circle-container::before {
+            opacity: 1;
+        }
+
+        .meter-circle {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.3));
+        }
+
+        .meter-circle-bg {
+            fill: none;
+            stroke: rgba(212, 175, 55, 0.1);
+            stroke-width: 3;
+        }
+
+        .meter-circle-fill {
+            fill: none;
+            stroke: url(#goldGradient);
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-dasharray: 503;
+            stroke-dashoffset: 503;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.6));
+            animation: fillCircle 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            transition: stroke-width 0.3s ease;
+        }
+
+        .meter-item:hover .meter-circle-fill {
+            stroke-width: 4;
+        }
+
+        @keyframes fillCircle {
+            to {
+                stroke-dashoffset: var(--dash-offset);
+            }
+        }
+
+        /* Decorative tick marks */
+        .meter-ticks {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .tick {
+            position: absolute;
+            width: 2px;
+            height: 8px;
+            background: rgba(212, 175, 55, 0.3);
+            top: 0;
+            left: 50%;
+            transform-origin: 50% 90px;
+        }
+
+        .tick:nth-child(1) {
+            transform: translateX(-50%) rotate(0deg);
+        }
+
+        .tick:nth-child(2) {
+            transform: translateX(-50%) rotate(30deg);
+        }
+
+        .tick:nth-child(3) {
+            transform: translateX(-50%) rotate(60deg);
+        }
+
+        .tick:nth-child(4) {
+            transform: translateX(-50%) rotate(90deg);
+        }
+
+        .tick:nth-child(5) {
+            transform: translateX(-50%) rotate(120deg);
+        }
+
+        .tick:nth-child(6) {
+            transform: translateX(-50%) rotate(150deg);
+        }
+
+        .tick:nth-child(7) {
+            transform: translateX(-50%) rotate(180deg);
+        }
+
+        .tick:nth-child(8) {
+            transform: translateX(-50%) rotate(210deg);
+        }
+
+        .tick:nth-child(9) {
+            transform: translateX(-50%) rotate(240deg);
+        }
+
+        .tick:nth-child(10) {
+            transform: translateX(-50%) rotate(270deg);
+        }
+
+        .tick:nth-child(11) {
+            transform: translateX(-50%) rotate(300deg);
+        }
+
+        .tick:nth-child(12) {
+            transform: translateX(-50%) rotate(330deg);
+        }
+
+        .meter-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .meter-percentage {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 600;
+            background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold-main) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .meter-item:hover .meter-percentage {
+            transform: scale(1.1);
+        }
+
+        .meter-label {
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: var(--gold-deeper);
+            text-transform: uppercase;
+            margin-top: 8px;
+        }
+
+        /* Description Section */
+        .meter-description {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .description-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .meter-item:hover .description-item {
+            opacity: 1;
+        }
+
+        .description-icon {
+            width: 8px;
+            height: 8px;
+            background: var(--gold-main);
+            transform: rotate(45deg);
+            flex-shrink: 0;
+            margin-top: 6px;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .meter-item:hover .description-icon {
+            transform: rotate(225deg);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
+        }
+
+        .description-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            line-height: 1.9;
+            color: #b0b0b0;
+            letter-spacing: 0.5px;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        .flavor-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .flavor-tag {
+            padding: 8px 20px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(212, 175, 55, 0.03));
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            color: var(--gold-main);
+            text-transform: uppercase;
+            font-family: 'Cinzel', serif;
+            font-weight: 400;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flavor-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .flavor-tag:hover::before {
+            left: 100%;
+        }
+
+        .flavor-tag:hover {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.06));
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(212, 175, 55, 0.15) 20%,
+                    rgba(212, 175, 55, 0.5) 50%,
+                    rgba(212, 175, 55, 0.15) 80%,
+                    transparent 100%);
+            margin: 60px 0;
+            position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 6px;
+            height: 6px;
+            background: var(--gold-main);
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .divider::before {
+            left: 25%;
+        }
+
+        .divider::after {
+            right: 25%;
+        }
+
+        .divider-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--black-deep);
+            padding: 0 20px;
+        }
+
+        .divider-ornament {
+            font-size: 10px;
+            color: var(--gold-main);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .profile-card {
+                padding: 70px 50px;
+            }
+
+            .main-title {
+                font-size: 56px;
+                letter-spacing: 8px;
+            }
+
+            .meter-visual {
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .profile-card {
+                padding: 50px 30px;
+            }
+
+            .main-title {
+                font-size: 42px;
+                letter-spacing: 6px;
+            }
+
+            .meter-visual {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .meter-circle-container {
+                width: 160px;
+                height: 160px;
+            }
+
+            .meter-description {
+                width: 100%;
+            }
+
+            .meter-item:hover {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="profile-card">
+        <div class="corner-ornament corner-tl"></div>
+        <div class="corner-ornament corner-tr"></div>
+        <div class="corner-ornament corner-bl"></div>
+        <div class="corner-ornament corner-br"></div>
+
+        <div class="corner-diamond diamond-tl"></div>
+        <div class="corner-diamond diamond-tr"></div>
+        <div class="corner-diamond diamond-bl"></div>
+        <div class="corner-diamond diamond-br"></div>
+
+        <div class="header">
+            <svg class="royal-crown" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5"
+                style="color: #d4af37;">
+                <path d="M8 40 L16 24 L24 32 L32 16 L40 32 L48 24 L56 40 L8 40 Z" fill="rgba(212, 175, 55, 0.1)" />
+                <circle cx="16" cy="24" r="3" fill="#d4af37" />
+                <circle cx="32" cy="16" r="3" fill="#d4af37" />
+                <circle cx="48" cy="24" r="3" fill="#d4af37" />
+                <path d="M8 40 L8 48 L56 48 L56 40" stroke="#d4af37" stroke-width="1.5" />
+                <path d="M12 48 L12 52 L52 52 L52 48" stroke="#d4af37" stroke-width="2" />
+            </svg>
+            <h1 class="main-title">Perfil</h1>
+            <p class="subtitle">Análisis Sensorial Detallado</p>
+        </div>
+
+        <div class="origin-container">
+            <div class="origin-badge">
+                <span class="origin-label">Microlote de Origen</span>
+                <span class="origin-value">Garzón, Huila — Colombia</span>
+            </div>
+        </div>
+
+        <div class="meters-grid">
+            <!-- Nivel de Tueste -->
+            <div class="meter-item">
+                <div class="meter-header">
+                    <h3 class="meter-name">Nivel de Tueste</h3>
+                    <span class="meter-value">Medio Alto</span>
+                </div>
+                <div class="meter-visual">
+                    <div class="meter-circle-container">
+                        <div class="meter-ticks">
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                        </div>
+                        <svg class="meter-circle" viewBox="0 0 180 180">
+                            <defs>
+                                <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#f4e4c1;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#d4af37;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#b8941e;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle class="meter-circle-bg" cx="90" cy="90" r="80" />
+                            <circle class="meter-circle-fill" cx="90" cy="90" r="80" style="--dash-offset: 226" />
+                        </svg>
+                        <div class="meter-center">
+                            <div class="meter-percentage">65%</div>
+                            <div class="meter-label">Intensidad</div>
+                        </div>
+                    </div>
+                    <div class="meter-description">
+                        <div class="description-item">
+                            <div class="description-icon"></div>
+                            <p class="description-text">Tueste medio-alto cuidadosamente calibrado que desarrolla la
+                                complejidad aromática mientras preserva los delicados matices florales y frutales
+                                característicos del Huila. El punto de desarrollo enfatiza las notas de caramelo y cacao
+                                sin sacrificar la brillantez.</p>
+                        </div>
+                        <div class="flavor-tags">
+                            <span class="flavor-tag">Caramelo</span>
+                            <span class="flavor-tag">Chocolate negro</span>
+                            <span class="flavor-tag">Nuez tostada</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider">
+                <div class="divider-center">
+                    <span class="divider-ornament">◆ ◆ ◆</span>
+                </div>
+            </div>
+
+            <!-- Acidez -->
+            <div class="meter-item">
+                <div class="meter-header">
+                    <h3 class="meter-name">Acidez</h3>
+                    <span class="meter-value">Vibrante</span>
+                </div>
+                <div class="meter-visual">
+                    <div class="meter-circle-container">
+                        <div class="meter-ticks">
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                        </div>
+                        <svg class="meter-circle" viewBox="0 0 180 180">
+                            <circle class="meter-circle-bg" cx="90" cy="90" r="80" />
+                            <circle class="meter-circle-fill" cx="90" cy="90" r="80" style="--dash-offset: 151" />
+                        </svg>
+                        <div class="meter-center">
+                            <div class="meter-percentage">78%</div>
+                            <div class="meter-label">Vivacidad</div>
+                        </div>
+                    </div>
+                    <div class="meter-description">
+                        <div class="description-item">
+                            <div class="description-icon"></div>
+                            <p class="description-text">Acidez brillante y vibrante que refleja la altitud excepcional
+                                de cultivo en Garzón. Notas cítricas vivaces de mandarina y lima kaffir se entrelazan
+                                con matices de manzana verde, creando una experiencia refrescante y compleja que perdura
+                                elegantemente.</p>
+                        </div>
+                        <div class="flavor-tags">
+                            <span class="flavor-tag">Mandarina</span>
+                            <span class="flavor-tag">Lima kaffir</span>
+                            <span class="flavor-tag">Manzana verde</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider">
+                <div class="divider-center">
+                    <span class="divider-ornament">◆ ◆ ◆</span>
+                </div>
+            </div>
+
+            <!-- Cuerpo -->
+            <div class="meter-item">
+                <div class="meter-header">
+                    <h3 class="meter-name">Cuerpo</h3>
+                    <span class="meter-value">Sedoso Pleno</span>
+                </div>
+                <div class="meter-visual">
+                    <div class="meter-circle-container">
+                        <div class="meter-ticks">
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                        </div>
+                        <svg class="meter-circle" viewBox="0 0 180 180">
+                            <circle class="meter-circle-bg" cx="90" cy="90" r="80" />
+                            <circle class="meter-circle-fill" cx="90" cy="90" r="80" style="--dash-offset: 126" />
+                        </svg>
+                        <div class="meter-center">
+                            <div class="meter-percentage">82%</div>
+                            <div class="meter-label">Textura</div>
+                        </div>
+                    </div>
+                    <div class="meter-description">
+                        <div class="description-item">
+                            <div class="description-icon"></div>
+                            <p class="description-text">Cuerpo excepcional con textura sedosa y aterciopelada que
+                                envuelve el paladar. La densidad media-alta proporciona una presencia sustancial sin
+                                pesadez, ofreciendo una sensación cremosa y redonda que realza cada nota de sabor con
+                                elegante persistencia.</p>
+                        </div>
+                        <div class="flavor-tags">
+                            <span class="flavor-tag">Cremoso</span>
+                            <span class="flavor-tag">Aterciopelado</span>
+                            <span class="flavor-tag">Redondo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider">
+                <div class="divider-center">
+                    <span class="divider-ornament">◆ ◆ ◆</span>
+                </div>
+            </div>
+
+            <!-- Complejidad Aromática -->
+            <div class="meter-item">
+                <div class="meter-header">
+                    <h3 class="meter-name">Complejidad Aromática</h3>
+                    <span class="meter-value">Excepcional</span>
+                </div>
+                <div class="meter-visual">
+                    <div class="meter-circle-container">
+                        <div class="meter-ticks">
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                        </div>
+                        <svg class="meter-circle" viewBox="0 0 180 180">
+                            <circle class="meter-circle-bg" cx="90" cy="90" r="80" />
+                            <circle class="meter-circle-fill" cx="90" cy="90" r="80" style="--dash-offset: 50" />
+                        </svg>
+                        <div class="meter-center">
+                            <div class="meter-percentage">93%</div>
+                            <div class="meter-label">Profundidad</div>
+                        </div>
+                    </div>
+                    <div class="meter-description">
+                        <div class="description-item">
+                            <div class="description-icon"></div>
+                            <p class="description-text">Perfil aromático extraordinariamente sofisticado con múltiples
+                                capas que se revelan progresivamente. Notas florales de jazmín y azahar se entremezclan
+                                con frutos rojos maduros, mientras sutiles toques de especias dulces y chocolate fino
+                                crean una sinfonía sensorial memorable e inigualable.</p>
+                        </div>
+                        <div class="flavor-tags">
+                            <span class="flavor-tag">Jazmín</span>
+                            <span class="flavor-tag">Frutos rojos</span>
+                            <span class="flavor-tag">Chocolate fino</span>
+                            <span class="flavor-tag">Especias dulces</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
